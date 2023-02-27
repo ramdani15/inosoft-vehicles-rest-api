@@ -1,0 +1,59 @@
+version: '3'
+services:
+    nginx:
+        platform: linux/arm64/v8
+        container_name: nginx-inosoft
+        image: nginx:1.17.8
+        command: [ "nginx", "-g", "daemon off;" ]
+        depends_on:
+            - app
+        links:
+            - app
+        working_dir: /var/www/html
+        volumes:
+            - ./docker/nginx/asset/:/etc/nginx/conf.d/
+            - ./docker/nginx/log:/var/log/nginx/:rw
+            - ./:/var/www/html:rw
+        ports:
+            - "${DOCKER_NGINX_PORT:-8080}:80"
+        logging:
+            options:
+                max-size: "1m"
+                max-file: "3"
+        networks:
+            - inosoft-network
+    app:
+        container_name: app-inosoft
+        build: ./docker/php
+        working_dir: /var/www/html
+        links:
+            - db
+        depends_on:
+            - db
+        volumes:
+            - ./:/var/www/html:rw
+        command: bash -c "php-fpm"
+        logging:
+            options:
+                max-size: "1m"
+                max-file: "3"
+        networks:
+            - inosoft-network
+    db:
+        platform: linux/arm64/v8
+        container_name: db-inosoft
+        image: mongo:4.2
+        volumes:
+            - './dbdata:/data/db'
+        ports:
+            - "${DOCKER_DB_PORT:-27018}:27017"
+        env_file:
+            - ./docker/.env
+        restart: always
+        logging:
+            driver: none
+        networks:
+            - inosoft-network
+
+networks:
+    inosoft-network:
