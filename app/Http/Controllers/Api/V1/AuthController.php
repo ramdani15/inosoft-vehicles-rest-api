@@ -83,7 +83,7 @@ class AuthController extends Controller
     {
         $user = auth()->user();
         if (! $user) {
-            return $this->responseJson('error', 'Unauthorized.', '', 401);
+            return $this->responseJson('error', __('Unauthorized.'), '', 401);
         }
         // FIXME : Fixing Revoke the token that was used to authenticate the current request
         // $revoke = auth()->user()->currentAccessToken()->delete();
@@ -91,9 +91,9 @@ class AuthController extends Controller
         /** Use below code if you want to log current user out in all devices */
         $revoke = $user->tokens()->delete();
         if (! $revoke) {
-            return $this->responseJson('error', 'Logout');
+            return $this->responseJson('error', __('Logout failed'), '', 400);
         }
 
-        return $this->responseJson('success', 'Logout');
+        return $this->responseJson('success', __('Logout successfully'));
     }
 }
