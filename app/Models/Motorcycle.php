@@ -16,7 +16,9 @@ class Motorcycle extends Model
         'suspension_type',
         'transmission_type',
     ];
+
     protected $dateFormat = 'U';
+
     protected $dates = [
         'created_at',
         'updated_at',

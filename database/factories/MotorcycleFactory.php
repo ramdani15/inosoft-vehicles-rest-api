@@ -16,7 +16,7 @@ class MotorcycleFactory extends Factory
         return [
             'machine' => $this->faker->name(),
             'suspension_type' => $this->faker->name(),
-            'transmission_type' => $this->faker->name()
+            'transmission_type' => $this->faker->name(),
         ];
     }
 }

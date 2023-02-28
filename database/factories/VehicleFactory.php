@@ -16,6 +16,7 @@ class VehicleFactory extends Factory
     public function definition()
     {
         $attachable = $this->attachable();
+
         return [
             'name' => $this->faker->name(),
             'year' => $this->faker->year(),
@@ -35,11 +36,11 @@ class VehicleFactory extends Factory
         return $this->faker->randomElement([
             [
                 'classname' => 'Car',
-                'class' => Car::class
+                'class' => Car::class,
             ],
             [
                 'classname' => 'Motorcycle',
-                'class' => Motorcycle::class
+                'class' => Motorcycle::class,
             ],
         ]);
     }

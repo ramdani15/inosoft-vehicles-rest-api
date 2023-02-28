@@ -16,7 +16,9 @@ class Car extends Model
         'capacity',
         'type',
     ];
+
     protected $dateFormat = 'U';
+
     protected $dates = [
         'created_at',
         'updated_at',

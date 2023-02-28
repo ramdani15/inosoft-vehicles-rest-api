@@ -177,6 +177,9 @@ return [
 
         // Polymorphic Mapping
         App\Providers\PolymorphicMappingServiceProvider::class,
+
+        // Override Sanctum Personal Access Token
+        App\Providers\SanctumMongodbProvider::class,
     ],
 
     /*

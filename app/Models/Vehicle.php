@@ -20,7 +20,9 @@ class Vehicle extends Model
         'attachable_type',
         'attachable_id',
     ];
+
     protected $dateFormat = 'U';
+
     protected $dates = [
         'created_at',
         'updated_at',

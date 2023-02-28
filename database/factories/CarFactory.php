@@ -16,7 +16,7 @@ class CarFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'capacity' => $this->faker->randomDigit(),
-            'type' => $this->faker->name()
+            'type' => $this->faker->name(),
         ];
     }
 }

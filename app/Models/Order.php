@@ -18,7 +18,9 @@ class Order extends Model
         'total_price',
         'user_id',
     ];
+
     protected $dateFormat = 'U';
+
     protected $dates = [
         'created_at',
         'updated_at',
