@@ -36,7 +36,7 @@ Vehicles REST API.
 - Run `docker compose exec app php artisan migrate:refresh --seed`
 - Run `docker compose exec app php artisan key:generate`
 - Run testing `docker compose exec app php artisan test`
-- On `.env` set `DB_HOST=db-inosoft` and `DB_PORT=27017`
+- On `.env` set `DB_CONNECTION=mongodb`, `DB_HOST=db-inosoft` and `DB_PORT=27017`
 - Open [http://localhost:8080](http://localhost:8080)
 
 
